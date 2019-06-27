@@ -4,7 +4,6 @@
 
 // import * as data from '../assets/data.json'
 import { normalize } from './utilities/math.js'
-import Island from './models/island.js'
 
 class App {
 
@@ -56,7 +55,7 @@ class App {
 
 		// add objects
 
-		this.createIsland()
+		// this.createIsland()
 
 		// add events
 
@@ -193,18 +192,18 @@ class App {
 
 	}
 
-	createIsland() {
+	// createIsland() {
 
-		// create new object
+	// 	// create new object
 
-		this.island = new Island()
+	// 	this.island = new Island()
 
-		// add the island to the scene
+	// 	// add the island to the scene
 
-		this.scene.add(this.island.mesh)
-		this.scene.updateMatrixWorld(true)
+	// 	this.scene.add(this.island.mesh)
+	// 	this.scene.updateMatrixWorld(true)
 
-	}
+	// }
 
 	updateZoom() {
 
@@ -283,35 +282,6 @@ class App {
 
 		e.preventDefault()
 
-		// update the picking ray with the camera and mouse position
-
-		this.raycaster.setFromCamera(this.mouse, this.camera)
-
-		// calculate objects intersecting the picking ray
-
-		// let intersects = this.raycaster.intersectObjects(this.island.mesh.children)
-		let intersects = this.raycaster.intersectObjects(this.scene.children, true)
-		let foundTree = false
-
-		console.log(intersects)
-
-		intersects.forEach((intersect) => {
-
-			let obj = intersect.object.parent
-			if (obj.name != 'tree' || foundTree) return
-
-			foundTree = true
-
-			let tree = this.island.trees.find((t) => t.uuid == obj.uuid)
-			let index = this.island.trees.findIndex((t) => t.uuid == obj.uuid)
-
-			tree.despawn()
-
-			SCENE.remove(SCENE.getObjectById(tree.mesh.id))
-			this.island.trees.splice(index, 1)
-
-		})
-
 	}
 
 	mousemove(e) {
@@ -371,7 +341,7 @@ class App {
 
 		// render
 
-		this.island.render()
+		// this.island.render()
   		this.renderer.render(this.scene, this.camera);
 
 		// add self to the requestAnimationFrame
