@@ -2,14 +2,17 @@
 // :: APP
 // -------------------------------------------------------------------
 
-// import * as data from '../assets/data.json'
+import Globe from './models/globe.js'
 import { normalize } from './utilities/math.js'
+// import * as data from '../assets/data.json'
 
 class App {
 
 	constructor() {
 
 		window.COLORS = {
+			white: 0xffffff,
+			beige: 0xf6d7b0,
 			cyan: 0x248079,
 			brown: 0xA98F78,
 			brownDark: 0x9A6169,
@@ -24,9 +27,7 @@ class App {
 			debug: false,
 			camera: {
 				zpf: 5, // zoom per frame
-				default: { x: -2.5, y: 3, z: 4 },
-				// default: { x: -1.25, y: 1.5, z: 2 },
-				// default: { x: -2.5, y: 3, z: 2 },
+				default: { x: 0, y: -50, z: 5 },
 				min: { x: 0, y: 0, z: 0 },
 				max: { x: 0, y: 1000, z: 1000 }
 			}
@@ -55,7 +56,7 @@ class App {
 
 		// add objects
 
-		// this.createIsland()
+		this.createGlobe()
 
 		// add events
 
@@ -192,18 +193,18 @@ class App {
 
 	}
 
-	// createIsland() {
+	createGlobe() {
 
-	// 	// create new object
+		// create new object
 
-	// 	this.island = new Island()
+		this.globe = new Globe()
 
-	// 	// add the island to the scene
+		// add the globe to the scene
 
-	// 	this.scene.add(this.island.mesh)
-	// 	this.scene.updateMatrixWorld(true)
+		this.scene.add(this.globe.mesh)
+		this.scene.updateMatrixWorld(true)
 
-	// }
+	}
 
 	updateZoom() {
 
@@ -341,7 +342,7 @@ class App {
 
 		// render
 
-		// this.island.render()
+		this.globe.render()
   		this.renderer.render(this.scene, this.camera);
 
 		// add self to the requestAnimationFrame
