@@ -28,8 +28,8 @@ class App {
 			camera: {
 				zpf: 5, // zoom per frame
 				default: { x: 0, y: -50, z: 5 },
-				min: { x: 0, y: 0, z: 0 },
-				max: { x: 0, y: 1000, z: 1000 }
+				min: { x: 0, y: -500, z: 0 },
+				max: { x: 0, y: -25, z: 1000 }
 			}
 		}
 
@@ -206,7 +206,7 @@ class App {
 
 	}
 
-	updateZoom() {
+	updateZoom(axis = 'y') {
 
 		// no need to zoom when scrollSpeed hasn't been updated
 
@@ -218,8 +218,8 @@ class App {
 
 		// min & max values
 
-		let zMin = this.config.camera.min.z,
-			zMax = this.config.camera.max.z
+		let min = this.config.camera.min[axis],
+			max = this.config.camera.max[axis]
 
 		// smoother scrolling at the end of the animation
 		// prevents zooms very small values, for example 1.2 ...
@@ -257,16 +257,16 @@ class App {
 
 		// get new z-pos
 
-		let z = this.camera.position.z + zpf
+		let pos = this.camera.position[axis] - zpf
 
 		// set boundaries for z-pos
 
-		z = (z > zMin) ? z : zMin
-		z = (z < zMax) ? z : zMax
+		pos = (pos > min) ? pos : min
+		pos = (pos < max) ? pos : max
 
 		// apply position if it's above threshold
 
-		this.camera.position.z = z
+		this.camera.position[axis] = pos
 
 	}
 

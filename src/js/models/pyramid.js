@@ -2,19 +2,18 @@
 
 export default class Pyramid {
 
-    constructor(radius, tilesize) {
+    constructor(size = 7) {
 
         // set properties
 
         this.materials = {
-            sandstone: new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true })
+            sandstone: new THREE.MeshPhongMaterial({ color: 0xffffaa })
         }
         this.mesh = new THREE.Object3D()
         this.mesh.name = this.type = 'pyramid'
         this.meshes = []
 
-        this.radius = radius
-        this.tilesize = tilesize
+        this.size = size
 
         // init
 
@@ -24,15 +23,14 @@ export default class Pyramid {
 
     init() {
 
-        // TODO: fix this... 
+        let geometry = new THREE.ConeBufferGeometry(this.size, this.size, 4)
+        let mesh = new THREE.Mesh(geometry, this.materials.sandstone)
 
-        // let geometry = new THREE.CylinderGeometry(this.radius, this.tilesize * 3, this.tilesize * 3, 4)
-        // this.mesh = new THREE.Mesh(geometry, this.materials.sandstone)
+        mesh.position.set(-2, -2, 2)
+        mesh.rotateX(Math.PI * 0.5)
+        mesh.rotateY(Math.PI * 0.4)
 
-        // let geometry = new THREE.ConeBufferGeometry(5, 20, 32)
-        // let material = new THREE.MeshBasicMaterial({ color: 0xffff00 })
-        // this.mesh = new THREE.Mesh(geometry, material)
-        // this.mesh.position.set(0.5, 0.1, 0)
+        this.mesh = mesh
 
     }
 

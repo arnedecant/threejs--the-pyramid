@@ -37,6 +37,7 @@ export default class Globe {
 
         this.createSphere()
         this.createSandPlain()
+        this.createPyramid()
 
         this.meshes.forEach((obj) => {
 
@@ -70,7 +71,7 @@ export default class Globe {
 
     createPyramid() {
 
-        let pyramid = new Pyramid(15, 15)
+        let pyramid = new Pyramid()
         this.meshes.push(pyramid)
 
     }
