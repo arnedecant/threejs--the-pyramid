@@ -18,7 +18,8 @@ class App {
 			brownDark: 0x9A6169,
 			green: 0x65BB61,
 			greenLight: 0xABD66A,
-			blue: 0x6BC6FF
+			blue: 0x6BC6FF,
+			yellow: 0xffff00
 		}
 
 		// set properties
@@ -136,6 +137,10 @@ class App {
 		// point the camera to the center
 
 		this.camera.lookAt(new THREE.Vector3(0,0,0))
+
+		// enable orbit controls
+
+		THREE.OrbitControls(this.camera)
 
 	}
 

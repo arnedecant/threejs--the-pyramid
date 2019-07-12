@@ -1,7 +1,8 @@
 'use strict'
 
 import SandPlain from './sandplain.js'
-import Pyramid from './pyramid.js';
+import Pyramid from './pyramid.js'
+import Sun from './sun.js'
 
 export default class Globe {
 
@@ -38,6 +39,7 @@ export default class Globe {
         this.createSphere()
         this.createSandPlain()
         this.createPyramid()
+        this.createSun()
 
         this.meshes.forEach((obj) => {
 
@@ -64,15 +66,22 @@ export default class Globe {
 
     createSandPlain() {
 
-        let sandplain = new SandPlain(this.radius - 0.2, this.segments)
-        this.meshes.push(sandplain)
+        this.sandplain = new SandPlain(this.radius - 0.2, this.segments)
+        this.meshes.push(this.sandplain)
 
     }
 
     createPyramid() {
 
-        let pyramid = new Pyramid()
-        this.meshes.push(pyramid)
+        this.pyramid = new Pyramid()
+        this.meshes.push(this.pyramid)
+
+    }
+
+    createSun() {
+
+        this.sun = new Sun()
+        this.meshes.push(this.sun)
 
     }
 
