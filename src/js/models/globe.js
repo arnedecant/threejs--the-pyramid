@@ -80,7 +80,7 @@ export default class Globe {
 
     createCelestial() {
 
-        this.celestial = new Celestial('sun')
+        this.celestial = new Celestial('sun', { x: 5, y: 4, z: 10 })
         this.meshes.push(this.celestial)
 
     }

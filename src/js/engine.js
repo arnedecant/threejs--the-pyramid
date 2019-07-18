@@ -173,8 +173,8 @@ export default class Engine {
 		// add lights to the scene
 
 		this.scene.add(this.light)
-		this.scene.add(this.shadowLight)
-		this.scene.add(this.backLight)
+		// this.scene.add(this.shadowLight)
+		// this.scene.add(this.backLight)
 
 	}
 

@@ -19,7 +19,7 @@ class App {
 			green: 0x65BB61,
 			greenLight: 0xABD66A,
 			blue: 0x6BC6FF,
-			yellow: 0xffff00
+			yellow: 0xfedd52
 		}
 
 		window.ENGINE = new Engine()

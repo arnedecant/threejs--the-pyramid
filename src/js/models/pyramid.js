@@ -24,13 +24,14 @@ export default class Pyramid {
     init() {
 
         let geometry = new THREE.ConeBufferGeometry(this.size, this.size, 4)
-        let mesh = new THREE.Mesh(geometry, this.materials.sandstone)
+        this.mesh = new THREE.Mesh(geometry, this.materials.sandstone)
 
-        mesh.position.set(-2, 2, 2)
-        mesh.rotateX(Math.PI * 0.52)
-        mesh.rotateY(Math.PI * 0.4)
+        this.mesh.position.set(-2, 2, 2)
+        this.mesh.rotateX(Math.PI * 0.52)
+        this.mesh.rotateY(Math.PI * 0.4)
 
-        this.mesh = mesh
+        this.mesh.castShadow = true
+        this.mesh.receiveShadow = true
 
     }
 
