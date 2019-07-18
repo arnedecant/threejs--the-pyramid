@@ -2,7 +2,7 @@
 
 import SandPlain from './sandplain.js'
 import Pyramid from './pyramid.js'
-import Sun from './sun.js'
+import Celestial from './celestial.js'
 
 export default class Globe {
 
@@ -39,7 +39,7 @@ export default class Globe {
         this.createSphere()
         this.createSandPlain()
         this.createPyramid()
-        this.createSun()
+        this.createCelestial()
 
         this.meshes.forEach((obj) => {
 
@@ -78,10 +78,10 @@ export default class Globe {
 
     }
 
-    createSun() {
+    createCelestial() {
 
-        this.sun = new Sun()
-        this.meshes.push(this.sun)
+        this.celestial = new Celestial('sun')
+        this.meshes.push(this.celestial)
 
     }
 

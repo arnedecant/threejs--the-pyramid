@@ -35,17 +35,13 @@ export default class Engine {
 
 		this.createScene()
 
-		// add lights
-
-		this.createLights()
-
 		// add events
 
 		window.addEventListener('resize', this.resize.bind(this), false)
-		window.addEventListener('click', this.click.bind(this), false)
-		window.addEventListener('mousemove', this.mousemove.bind(this), false)
-		window.addEventListener('mousedown', this.mousedown.bind(this), false)
-		window.addEventListener('mouseup', this.mouseup.bind(this), false)
+		// window.addEventListener('click', this.click.bind(this), false)
+		// window.addEventListener('mousemove', this.mousemove.bind(this), false)
+		// window.addEventListener('mousedown', this.mousedown.bind(this), false)
+		// window.addEventListener('mouseup', this.mouseup.bind(this), false)
 		window.addEventListener('mousewheel', this.scroll.bind(this), { passive: true })
 
 		// render
@@ -69,13 +65,17 @@ export default class Engine {
 
 		this.scene.fog = new THREE.Fog(0xf7d9aa, 100, 950)
 
+		// create the renderer
+
+		this.createRenderer()
+
 		// create the camera
 
 		this.createCamera()
 
-		// create the renderer
+		// add lights
 
-		this.createRenderer()
+		this.createLights()
 
 		// add debug helpers
 
@@ -120,7 +120,7 @@ export default class Engine {
 
 		// enable orbit controls
 
-		THREE.OrbitControls(this.camera)
+		this.controls = THREE.OrbitControls(this.camera, this.renderer.domElement)
 
 	}
 
@@ -239,6 +239,10 @@ export default class Engine {
 		// apply position if it's above threshold
 
 		this.camera.position[axis] = pos
+
+		// update controls
+
+		if (this.controls) this.controls.update()
 
 	}
 

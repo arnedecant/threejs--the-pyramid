@@ -3,7 +3,6 @@
 // -------------------------------------------------------------------
 
 import Globe from './models/globe.js'
-import { normalize } from './utilities/math.js'
 import Engine from './Engine.js';
 // import * as data from '../assets/data.json'
 

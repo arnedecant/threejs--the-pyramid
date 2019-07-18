@@ -1,17 +1,20 @@
 'use strict'
 
-export default class Sun {
+export default class Celestial {
 
-    constructor() {
+    constructor(state = 'sun') {
 
         // set properties
 
+        this.state = state
+
         this.materials = {
-            sun: new THREE.MeshStandardMaterial({ color: COLORS.yellow })
+            sun: new THREE.MeshPhongMaterial({ color: COLORS.yellow }),
+            moon: new THREE.MeshPhongMaterial({ color: COLORS.white })
         }
 
         this.mesh = new THREE.Object3D()
-        this.mesh.name = 'sun'
+        this.mesh.name = 'celestial'
         this.meshes = []
 
         this.radius = 2
@@ -41,10 +44,10 @@ export default class Sun {
     createSphere() {
 
         let geometry = new THREE.SphereBufferGeometry(this.radius, this.segments, this.segments)
-        let mesh = new THREE.Mesh(geometry, this.materials.sun)
+        let mesh = new THREE.Mesh(geometry, this.materials[this.state])
 
         mesh.position.set(5, 4, 10)
-        mesh.name = 'sun--sphere'
+        mesh.name = 'celestial--sphere'
 
         this.meshes.push({ type: 'sphere', mesh: mesh })
 
