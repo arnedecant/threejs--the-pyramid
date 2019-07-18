@@ -7,7 +7,7 @@ export default class Pyramid {
         // set properties
 
         this.materials = {
-            sandstone: new THREE.MeshBasicMaterial({ color: 0xffffaa })
+            sandstone: new THREE.MeshLambertMaterial({ color: 0xffffaa })
         }
         this.mesh = new THREE.Object3D()
         this.mesh.name = this.type = 'pyramid'

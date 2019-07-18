@@ -38,10 +38,10 @@ export default class Engine {
 		// add events
 
 		window.addEventListener('resize', this.resize.bind(this), false)
-		// window.addEventListener('click', this.click.bind(this), false)
-		// window.addEventListener('mousemove', this.mousemove.bind(this), false)
-		// window.addEventListener('mousedown', this.mousedown.bind(this), false)
-		// window.addEventListener('mouseup', this.mouseup.bind(this), false)
+		window.addEventListener('click', this.click.bind(this), false)
+		window.addEventListener('mousemove', this.mousemove.bind(this), false)
+		window.addEventListener('mousedown', this.mousedown.bind(this), false)
+		window.addEventListener('mouseup', this.mouseup.bind(this), false)
 		window.addEventListener('mousewheel', this.scroll.bind(this), { passive: true })
 
 		// render
@@ -85,7 +85,7 @@ export default class Engine {
 
 	debug() {
 
-		let axesHelper = new THREE.AxesHelper(5)
+		let axesHelper = new THREE.AxesHelper(50)
 		this.scene.add(axesHelper)
 
 	}
@@ -121,6 +121,7 @@ export default class Engine {
 		// enable orbit controls
 
 		this.controls = THREE.OrbitControls(this.camera, this.renderer.domElement)
+		// this.controls.target.set(0, 0, 1000)
 
 	}
 
@@ -242,7 +243,7 @@ export default class Engine {
 
 		// update controls
 
-		if (this.controls) this.controls.update()
+		// if (this.controls) this.controls.update()
 
 	}
 
@@ -317,7 +318,8 @@ export default class Engine {
 
 		// update zoom
 
-		this.updateZoom()
+		// this.updateZoom()
+		if (this.controls) this.controls.update()
 
 		// render
 

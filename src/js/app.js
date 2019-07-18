@@ -22,7 +22,7 @@ class App {
 			yellow: 0xfedd52
 		}
 
-		window.ENGINE = new Engine()
+		window.ENGINE = new Engine({debug: true})
 
 		// init
 
@@ -38,7 +38,7 @@ class App {
 
 		// render
 
-		ENGINE.render()
+		this.render()
 
 	}
 
