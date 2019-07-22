@@ -88,6 +88,9 @@ export default class Engine {
 		let axesHelper = new THREE.AxesHelper(50)
 		this.scene.add(axesHelper)
 
+		let gridHelper = new THREE.GridHelper(1000, 1000, 0x3f3f3f, 0x3f3f3f)
+		this.scene.add(gridHelper)
+
 	}
 
 	createCamera() {
@@ -97,7 +100,7 @@ export default class Engine {
 		this.aspectRatio = this.width / this.height
 		this.fieldOfView = 60
 		this.nearPlane = 1
-		this.farPlane = 10000
+		this.farPlane = 1000
 
 		// create a new camera
 
@@ -110,9 +113,7 @@ export default class Engine {
 
 		// set camera position
 
-		this.camera.position.x = this.config.camera.default.x
-		this.camera.position.y = this.config.camera.default.y
-		this.camera.position.z = this.config.camera.default.z
+		for (let axis of ['x','y','z']) this.camera.position[axis] = this.config.camera.default[axis]
 
 		// point the camera to the center
 
@@ -120,8 +121,21 @@ export default class Engine {
 
 		// enable orbit controls
 
-		this.controls = THREE.OrbitControls(this.camera, this.renderer.domElement)
-		// this.controls.target.set(0, 0, 1000)
+		this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement)
+		this.controls.minPolarAngle = Math.PI/2
+		// this.controls.maxPolarAngle = Math.PI/2
+		this.controls.minAzimuthAngle = 0
+  		this.controls.maxAzimuthAngle = 0
+
+		// this.controls = new THREE.TrackballControls(this.camera, this.renderer.domElement)
+
+		// this.controls.rotateSpeed = 1.0
+		// this.controls.zoomSpeed = 1.2
+		// this.controls.panSpeed = 0.8
+		// this.controls.noZoom = false
+		// this.controls.noPan = false
+		// this.controls.staticMoving = true
+		// this.controls.dynamicDampingFactor = 0.3
 
 	}
 
